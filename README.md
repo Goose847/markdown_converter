@@ -36,7 +36,12 @@ Milestones to build out:
 
 Would give:
 ```html
-<doc>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
     <h1>Holiday Ideas</h1>
     
     <h2>Beach</h2>
@@ -54,7 +59,7 @@ Would give:
         <li>Chilling round the fire</li>
         <li>Difficult to keep dirt out of your tent</li>       
     </ul>
-</doc>
+</body>
 ```
 
  ### Ingestion and conversion:

@@ -5,6 +5,7 @@ enum Block {
     BulletList,
     OrderedList,
     Link,
+    Paragraph,
 }
 fn main() {
     println!("Hello, world!");
