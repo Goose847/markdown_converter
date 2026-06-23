@@ -1,29 +1,33 @@
+// Data Structures
 enum Block {
-    Heading,
-    Italic,
-    Bold,
-    BulletList,
-    OrderedList,
-    Link,
-    Paragraph,
+    Heading {
+        level: u8,
+        text: Vec<Inline>,
+    },
+    List {
+        ordered: bool,
+        text: Vec<Vec<Inline>>,
+    },
+    Paragraph {
+        text: Vec<Inline>,
+    },
 }
 
-struct Heading {
-    level: u8,
-    text: String,
-}
-struct List {
-    ordered: bool,
-    text: String,
-}
-struct Emphasis {
-    bold: bool,
-    text: String,
-}
-struct Link {
-    text: String,
+enum Inline {
+    Text(String),
+    Bold(Vec<Inline>),
+    Italic(Vec<Inline>),
+    Link {
+        link_text: Vec<Inline>,
+        link_url: String,
+    },
 }
 
+struct Document {
+    blocks: Vec<Block>,
+}
+
+// Orchistration
 fn main() {
     println!("Hello, world!");
 }
