@@ -1,3 +1,13 @@
+use clap::Parser;
+
+//Commnd Line Interface
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+pub struct Cli {
+    input_file: String,
+    output_file: Option<String>,
+}
+
 // Data Structures
 enum Block {
     Heading {
@@ -29,5 +39,6 @@ struct Document {
 
 // Orchistration
 fn main() {
-    println!("Hello, world!");
+    let cli = Cli::parse();
+    println!("{0}", cli.input_file);
 }
