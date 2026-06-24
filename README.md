@@ -73,5 +73,5 @@ So what I need is:
 
 ### Error handling
 The types of errors I'll be looking out for will be:
- - File not found / file found but empty 
- - Syntax not recognized.
+ - File not found / file found but empty, file found but not an md file.
+ - Syntax not recognized/incorrect.
