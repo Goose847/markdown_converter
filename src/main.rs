@@ -34,6 +34,7 @@ impl From<std::io::Error> for AppError {
         AppError::Io(e)
     }
 }
+
 // Data Structures
 enum Block {
     Heading {
@@ -63,6 +64,10 @@ struct Document {
     blocks: Vec<Block>,
 }
 
+// Parser Logic
+fn parse(input: &str) -> Result<Document, AppError> {
+    todo!()
+}
 // Orchistration
 fn main() {
     let cli = Cli::parse();
