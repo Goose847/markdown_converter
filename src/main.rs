@@ -63,20 +63,29 @@ enum Inline {
 struct Document {
     blocks: Vec<Block>,
 }
+impl Document {
+    fn new() -> Document {
+        Document {
+            blocks : Vec::new(),
+        }
+    }
+}
 
 // Parser Logic
 fn parse(input: &str) -> Result<Document, AppError> {
-    let document = input.lines();
-    for line in document {
-        if let Some((index, character)) = line.char_indices().find(|(_, c)| !c.is_whitespace()){
+    let document = Document::new();
+    let doc_lines = input.lines();
+    for line in doc_lines {
+        if let Some((_, character)) = line.char_indices().find(|(_, c)| !c.is_whitespace()){
             match character{
                 '#' => todo!(),
                 '-' => todo!(),
-                '_' => todo!(),
+                _ => todo!(),
             } 
         }
         
     }
+    Ok(document)
 }
 
 //html formatting
