@@ -72,14 +72,43 @@ impl Document {
 }
 
 // Parser Logic
+fn get_rest_of_line(line: &str) -> &str {
+    line.split_once(char::is_whitespace)
+        .map(|(_, rest)| rest.trim_start())
+        .unwrap_or("")
+}
+
+fn inline_parser(line: &str) -> Result<Inline, AppError> {
+    todo!()
+}
+
 fn parse(input: &str) -> Result<Document, AppError> {
     let document = Document::new();
     let doc_lines = input.lines();
     for line in doc_lines {
         if let Some((_, character)) = line.char_indices().find(|(_, c)| !c.is_whitespace()){
             match character{
-                '#' => todo!(),
-                '-' => todo!(),
+                '#' => {
+                    let level = line
+                        .split_whitespace()
+                        .next()
+                        .map_or(0, |word| word.chars().count());
+                    
+                    let raw_text = get_rest_of_line(&line);
+
+                    document.blocks.push(Block::Heading{
+                        level: level.try_into().unwrap(), text,
+                    })
+                },
+                '-' => {
+                    todo!()
+                    // Figure out if it is the beginning of a list or part of an existing list
+                    // extract text
+                    // check inlines
+                    // put into block for each item 
+                    // push to Document
+
+                },
                 _ => todo!(),
             } 
         }
