@@ -66,10 +66,25 @@ struct Document {
 
 // Parser Logic
 fn parse(input: &str) -> Result<Document, AppError> {
-    todo!()
+    let document = input.lines();
+    for line in document {
+        if let Some((index, character)) = line.char_indices().find(|(_, c)| !c.is_whitespace()){
+            match character{
+                '#' => todo!(),
+                '-' => todo!(),
+                '_' => todo!(),
+            } 
+        }
+        
+    }
 }
+
+//html formatting
+
 // Orchistration
 fn main() {
     let cli = Cli::parse();
-    println!("{0}", cli.input_file);
+    let file = std::fs::read_to_string(cli.input_file)
+        .expect("shoulda been a file here -- handle better later");
+    let doc = parse(&file);
 }
