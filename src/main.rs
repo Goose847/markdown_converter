@@ -80,6 +80,27 @@ fn get_rest_of_line(line: &str) -> &str {
 
 fn inline_parser(line: &str) -> Result<Inline, AppError> {
     todo!()
+    //Look over line. 
+    //Look for _, * and link structure (text)[ulr]
+    //Ensure matching closures
+    //Return Inline
+    let words = line.split_whitespace();
+    for word in words {
+        let last_char = word.chars().last();
+        if word.starts_with(last_char){
+            match last_char {
+                '_' => {
+                    Inline::Italic(word)
+                },
+                '*' => {
+                    Inline::Bold(word)
+                },
+                _ => {
+                    Inline::Text(word)
+                }
+            }
+        }
+   }
 }
 
 fn parse(input: &str) -> Result<Document, AppError> {
